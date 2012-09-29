@@ -1,1 +1,24 @@
 @import "bootstrap";
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  font-weight: bold;
+  color: #000;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+body {
+  margin-top: 50px;
+  font-family: "Ubuntu", "Trebuchet MS", sans-serif;
+}
+
