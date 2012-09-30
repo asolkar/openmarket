@@ -1,7 +1,10 @@
+<% provide(:app_name, 'OpenMarket') %>
+<% provide(:app_author, 'Mahesh Asolkar') %>
+<% provide(:copy_year, '2012') %>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>OpenMarket | <%= yield(:title) %></title>
+  <title><%= yield(:app_name) %> | <%= yield(:title) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -10,7 +13,6 @@
   <%= render 'layouts/header' %>
   <div class="container">
     <%= yield %>
-
     <%= render 'layouts/footer' %>
   </div>
 </body>

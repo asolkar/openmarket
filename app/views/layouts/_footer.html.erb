@@ -1,9 +1,5 @@
-<footer class="footer">
-  <small> <a href="/">OpenMarket</a> by Mahesh Asolkar
-  <nav>
-    <ul class="nav">
-      <li><a href="http://railstutorial.org/">With help from Rails Tutorial</a></li>
-    </ul>
-  </nav>
-  </small>
- </footer>
+  <footer class="footer" style="text-align:center">
+    <small>
+      <a href="/"><%= yield(:app_name) %></a> by <%= yield(:app_author) %> &copy; <%= yield(:copy_year) %>
+    </small>
+  </footer>
