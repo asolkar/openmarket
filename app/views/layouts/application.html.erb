@@ -2,18 +2,33 @@
 <% provide(:app_author, 'Mahesh Asolkar') %>
 <% provide(:copy_year, '2012') %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
   <title><%= yield(:app_name) %> | <%= yield(:title) %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OpenMarket page">
+  <meta name="author" content="OpenMarket">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <%= render 'layouts/header' %>
-  <div class="container">
+
     <%= yield %>
     <%= render 'layouts/footer' %>
-  </div>
+
+  <!-- Javascript entry point -->
+  <script>
+    !function ($) {
+      $(function(){
+        // carousel demo
+        $('#myCarousel').carousel({
+          interval: false
+        })
+      })
+    }(window.jQuery)
+  </script>
 </body>
 </html>
