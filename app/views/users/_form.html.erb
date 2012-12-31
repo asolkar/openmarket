@@ -11,33 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :id %><br />
-    <%= f.number_field :id %>
-  </div>
-  <div class="field">
-    <%= f.label :created_at %><br />
+  <!-- div class="field">
+    <%= f.label :created_at %>
     <%= f.datetime_select :created_at %>
-  </div>
+  </div -->
   <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-    <%= f.label :fullname %><br />
+    <%= f.label :fullname %>
     <%= f.text_field :fullname %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
+  <!-- div class="field">
+    <%= f.label :id %>
+    <%= f.number_field :id %>
+  </div -->
   <div class="field">
-    <%= f.label :token %><br />
-    <%= f.text_field :token %>
+    <%= f.label :password %>
+    <%= f.text_field :password %>
   </div>
   <div class="field">
-    <%= f.label :secret %><br />
-    <%= f.text_field :secret %>
+    <%= f.label :password_confirmation %>
+    <%= f.text_field :password_confirmation %>
   </div>
   <div class="actions">
     <%= f.submit %>
