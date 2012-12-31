@@ -1,0 +1,10 @@
+        <% if current_user %>
+          <div class="navbar-form pull-right" style="margin-top:0.5em">
+            <a class="btn btn-small" href="/logout">Logout <%= current_user.fullname %></a>
+          </div>
+        <% end %>
+        <% if !current_user %>
+          <div class="navbar-form pull-right" style="margin-top:0.5em">
+            <a class="btn btn-primary btn-small" href="/login">Log in</a>
+          </div>
+        <% end %>

@@ -1,14 +1,17 @@
+<% provide(:title, 'User List') %>
+<div class="container">
+
+<hr class="featurette-starter">
+
 <h1>Listing users</h1>
 
 <table>
   <tr>
-    <th>Id</th>
     <th>Created at</th>
-    <th>Username</th>
-    <th>Fullname</th>
     <th>Email</th>
-    <th>Token</th>
-    <th>Secret</th>
+    <th>Fullname</th>
+    <th>Id</th>
+    <th>Password digest</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,13 +19,11 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.id %></td>
     <td><%= user.created_at %></td>
-    <td><%= user.username %></td>
-    <td><%= user.fullname %></td>
     <td><%= user.email %></td>
-    <td><%= user.token %></td>
-    <td><%= user.secret %></td>
+    <td><%= user.fullname %></td>
+    <td><%= user.id %></td>
+    <td><%= user.password_digest %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -33,3 +34,7 @@
 <br />
 
 <%= link_to 'New User', new_user_path %>
+
+<hr class="featurette-divider">
+
+</div><!-- /.container -->

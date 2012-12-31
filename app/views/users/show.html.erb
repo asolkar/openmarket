@@ -1,23 +1,13 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, 'User Info') %>
+<div class="container">
 
-<p>
-  <b>Id:</b>
-  <%= @user.id %>
-</p>
+<hr class="featurette-starter">
+
+<p id="notice"><%= notice %></p>
 
 <p>
   <b>Created at:</b>
   <%= @user.created_at %>
-</p>
-
-<p>
-  <b>Username:</b>
-  <%= @user.username %>
-</p>
-
-<p>
-  <b>Fullname:</b>
-  <%= @user.fullname %>
 </p>
 
 <p>
@@ -26,15 +16,25 @@
 </p>
 
 <p>
-  <b>Token:</b>
-  <%= @user.token %>
+  <b>Fullname:</b>
+  <%= @user.fullname %>
 </p>
 
 <p>
-  <b>Secret:</b>
-  <%= @user.secret %>
+  <b>Id:</b>
+  <%= @user.id %>
+</p>
+
+<p>
+  <b>Password digest:</b>
+  <%= @user.password_digest %>
 </p>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+
+<hr class="featurette-divider">
+
+</div><!-- /.container -->
