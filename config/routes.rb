@@ -1,4 +1,8 @@
 OpenMarket::Application.routes.draw do
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   get "static_pages/home"
   get "static_pages/help"
   get "static_pages/about"
