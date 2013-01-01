@@ -60,7 +60,7 @@ module OpenMarket
     config.assets.version = '1.0'
 
     # # Suggested by ActiveAdmin install
-    # config.assets.initialize_on_precompile = false
-    # config.assets.precompile += %w[active_admin.css active_admin.js]
+    config.assets.initialize_on_precompile = false
+    config.assets.precompile += %w[active_admin.css active_admin/print.css active_admin.js]
   end
 end
