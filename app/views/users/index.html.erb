@@ -1,10 +1,7 @@
 <% provide(:title, 'User List') %>
-<div class="container">
+<% provide(:page_heading, 'Listing users') %>
 
-<hr class="featurette-starter">
-
-<h1>Listing users</h1>
-
+<%= render 'shared/page_top' %>
 <table>
   <tr>
     <th>Created at</th>
@@ -35,6 +32,4 @@
 
 <%= link_to 'New User', new_user_path %>
 
-<hr class="featurette-divider">
-
-</div><!-- /.container -->
+<%= render 'shared/page_bottom' %>

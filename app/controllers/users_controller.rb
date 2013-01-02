@@ -39,8 +39,6 @@ class UsersController < ApplicationController
     end
   end
 
-  private
-
   # GET /users/1
   # GET /users/1.json
   def show

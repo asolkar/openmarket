@@ -1,14 +1,10 @@
 <% provide(:title, 'New User') %>
-<div class="container">
+<% provide(:page_heading, 'Join OpenMarket') %>
 
-<hr class="featurette-starter">
-
-<h1>New user</h1>
+<%= render 'shared/page_top' %>
 
 <%= render 'form' %>
 
 <%= link_to 'Back', users_path %>
 
-<hr class="featurette-divider">
-
-</div><!-- /.container -->
+<%= render 'shared/page_bottom' %>

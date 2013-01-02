@@ -1,10 +1,7 @@
 <% provide(:title, 'User Info') %>
-<div class="container">
+<% provide(:page_heading, 'Showing User') %>
 
-<hr class="featurette-starter">
-
-<p id="notice"><%= notice %></p>
-
+<%= render 'shared/page_top' %>
 <p>
   <b>Created at:</b>
   <%= @user.created_at %>
@@ -34,7 +31,4 @@
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
 
-
-<hr class="featurette-divider">
-
-</div><!-- /.container -->
+<%= render 'shared/page_bottom' %>

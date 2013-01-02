@@ -1,9 +1,7 @@
 <% provide(:title, 'User Login') %>
-<div class="container">
+<% provide(:page_heading, 'Log in') %>
 
-<hr class="featurette-starter">
-
-<h1>Log in</h1>
+<%= render 'shared/page_top' %>
 
 <%= form_tag sessions_path do %>
   <div class="field">
@@ -17,6 +15,4 @@
   <div class="actions"><%= submit_tag "Log in" %></div>
 <% end %>
 
-<hr class="featurette-divider">
-
-</div><!-- /.container -->
+<%= render 'shared/page_bottom' %>
