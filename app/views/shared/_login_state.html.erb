@@ -1,10 +1,19 @@
         <% if current_user %>
-          <div class="navbar-form pull-right" style="margin-top:0.5em">
-            <a class="btn btn-small" href="/logout">Logout <%= current_user.fullname %></a>
+          <div class="nav navbar-form pull-right">
+            <!-- a class="btn btn-small" href="/logout">Logout <%= current_user.fullname %></a -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <%= current_user.fullname %> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/shops/">My Shops</a></li>
+                <li><a href="/shops/new">Create Shop</a></li>
+                <li><a href="/logout">Logout</a></li>
+              </ul>
+            </li>
           </div>
         <% end %>
         <% if !current_user %>
-          <div class="navbar-form pull-right" style="margin-top:0.5em">
+          <div class="nav navbar-form pull-right" style="margin-top:0.5em">
             <a class="btn btn-primary btn-small" href="/login">Log in</a>
           </div>
         <% end %>
