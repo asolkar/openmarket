@@ -1,4 +1,8 @@
 OpenMarket::Application.routes.draw do
+  resources :items
+
+  resources :shops
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config

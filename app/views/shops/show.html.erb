@@ -1,0 +1,23 @@
+<% provide(:title, 'Shop Info') %>
+<% provide(:page_heading, 'Showing Shop') %>
+
+<p>
+  <b>Created at:</b>
+  <%= @shop.created_at %>
+</p>
+<p>
+  <b>Created by:</b>
+  <%= @shop.user.fullname %>
+</p>
+<p>
+  <b>Name:</b>
+  <%= @shop.name %>
+</p>
+<p>
+  <b>Description:</b>
+  <%= @shop.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_shop_path(@shop) %> |
+<%= link_to 'Back', shops_path %>
