@@ -1,7 +1,20 @@
+<% if content_for?(:outside_container) %>
+<%= yield(:outside_container) %>
+<% end %>
+
 <div class="container">
+
+<% if content_for?(:inside_container) %>
+<%= render "shared/alerts" %>
+<%= yield(:inside_container) %>
+<% end %>
 
 <hr class="featurette-starter">
 
-<h1><%= yield(:page_heading) %></h1>
-
+<% if !content_for?(:inside_container) %>
 <%= render "shared/alerts" %>
+<% end %>
+
+<% if !:page_heading.blank? %>
+<h1><%= yield(:page_heading) %></h1>
+<% end %>

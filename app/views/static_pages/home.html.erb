@@ -1,5 +1,6 @@
 <% provide(:title, 'Home') %>
 
+<% content_for :outside_container do %>
 <!-- Carousel
 ================================================== -->
 <div id="myCarousel" class="carousel slide">
@@ -38,9 +39,9 @@
   <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
   <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
 </div><!-- /.carousel -->
+<% end %> <!-- outside_container -->
 
-<div class="container">
-
+<% content_for :inside_container do %>
 <!-- Three columns of text below the carousel -->
 <div class="row">
   <div class="span4">
@@ -62,11 +63,6 @@
     <p><a class="btn" href="#">View details &raquo;</a></p>
   </div><!-- /.span4 -->
 </div><!-- /.row -->
-
-<hr class="featurette-divider">
+<% end %> <!-- inside_container -->
 
 Home content comes here
-
-<hr class="featurette-divider">
-
-</div><!-- /.container -->

@@ -1,7 +1,6 @@
 <% provide(:title, 'User Info') %>
 <% provide(:page_heading, 'Showing User') %>
 
-<%= render 'shared/page_top' %>
 <p>
   <b>Created at:</b>
   <%= @user.created_at %>
@@ -30,5 +29,3 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
-
-<%= render 'shared/page_bottom' %>

@@ -1,5 +1,10 @@
 class SessionsController < ApplicationController
   def new
+    if current_user
+      flash[:notice] = "You are already logged as " + current_user.fullname
+      redirect_to '/'
+      return false
+    end
   end
 
   def create
