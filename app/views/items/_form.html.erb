@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :created_at %><br />
-    <%= f.datetime_select :created_at %>
-  </div>
-  <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
@@ -36,6 +32,6 @@
     <%= f.check_box :active %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Item User', :class => 'btn' %>
   </div>
 <% end %>
