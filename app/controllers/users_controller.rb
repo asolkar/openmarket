@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_user, :only => [:index, :show, :edit, :update, :destroy]
+  before_filter :require_user, :only => [:index, :show, :edit, :update]
 
   # GET /users/new
   # GET /users/new.json
@@ -40,18 +40,22 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @user = current_user
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
+      format.html { redirect_to @user, notice: 'User listing is not allowed.' }
+      format.json { render json: @user, status: :unprocessable_entity, location: @user }
     end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
+    if params.has_key?(:id)
+      @user = User.find(params[:id])
+    else
+      @user = current_user
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -77,18 +81,6 @@ class UsersController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /users/1
-  # DELETE /users/1.json
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :no_content }
     end
   end
 end

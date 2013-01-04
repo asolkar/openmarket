@@ -1,15 +1,5 @@
-<% provide(:title, 'User Info') %>
-<% provide(:page_heading, 'Showing User') %>
-
-<p>
-  <b>Created at:</b>
-  <%= @user.created_at %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
+<% provide(:title, 'User Info - ' + "#{@user.fullname}") %>
+<% provide(:page_heading, "#{@user.fullname}") %>
 
 <p>
   <b>Fullname:</b>
@@ -22,10 +12,13 @@
 </p>
 
 <p>
-  <b>Password digest:</b>
-  <%= @user.password_digest %>
+  <b>Email:</b>
+  <%= @user.email %>
 </p>
 
+<p>
+  <b>Created at:</b>
+  <%= @user.created_at %>
+</p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_user_path(@user), :class => 'btn' %>

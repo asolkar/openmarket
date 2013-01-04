@@ -63,7 +63,8 @@ OpenMarket::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'users#index'
-  root :to => 'static_pages#home'
+  root :to => 'static_pages#home', :constraints => lambda{ |req| req.session[:user_id].blank? }
+  root :to => 'users#show', :constraints => lambda{ |req| !req.session[:user_id].blank? }
 
   # See how all your routes lay out with "rake routes"
 
@@ -71,9 +72,17 @@ OpenMarket::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 
+  #
+  # Generic paths
+  #
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/signup',  to: 'users#new'
   match '/login',   to: 'sessions#new'
   match '/logout',  to: 'sessions#destroy'
+
+  #
+  # Singular user paths - for authenticated user access
+  #
+  match '/user(/:id)',    to: 'users#show', :via => :get
 end

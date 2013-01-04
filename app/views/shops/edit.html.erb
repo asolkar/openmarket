@@ -1,6 +1,10 @@
 <h1>Editing shop</h1>
 
-<%= render 'form' %>
+<% if @shop.user.id == current_user.id %>
+  <%= render 'form' %>
+<% else %>
+  <h2>You (id=<%= current_user.id %>) are not allowed to edit other users' (id=<%= @shop.user.id %>) shops </h2>
+<% end %>
 
-<%= link_to 'Show', @shop %> |
-<%= link_to 'Back', shops_path %>
+<%= link_to 'Show', @shop, :class => 'btn' %> 
+<%= link_to 'Back', shops_path, :class => 'btn' %>

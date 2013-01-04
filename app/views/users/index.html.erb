@@ -7,8 +7,6 @@
     <th>Email</th>
     <th>Fullname</th>
     <th>Id</th>
-    <th>Password digest</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -19,10 +17,12 @@
     <td><%= user.email %></td>
     <td><%= user.fullname %></td>
     <td><%= user.id %></td>
-    <td><%= user.password_digest %></td>
     <td><%= link_to 'Show', user %></td>
+<% if user.id == current_user.id %>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% else %>
+    <td>&mdash;</td>
+<% end %>
   </tr>
 <% end %>
 </table>

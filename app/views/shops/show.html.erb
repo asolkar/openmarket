@@ -18,6 +18,7 @@
   <%= @shop.description %>
 </p>
 
-
-<%= link_to 'Edit', edit_shop_path(@shop) %> |
-<%= link_to 'Back', shops_path %>
+<% if @shop.user.id == current_user.id %>
+  <%= link_to 'Edit', edit_shop_path(@shop), :class => 'btn' %> 
+<% end %>
+<%= link_to 'Shops', shops_path, :class => 'btn' %>
