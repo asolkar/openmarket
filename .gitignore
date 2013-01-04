@@ -4,6 +4,10 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile ~/.gitignore_global
 
+# For now, adding Gemfile.lock to gitignore. If it proves to be a bad
+# idea, I'll remove it from here - Mahesh
+Gemfile.lock
+
 # Ignore bundler config
 /.bundle
 
