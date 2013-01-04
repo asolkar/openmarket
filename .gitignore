@@ -6,7 +6,8 @@
 
 # For now, adding Gemfile.lock to gitignore. If it proves to be a bad
 # idea, I'll remove it from here - Mahesh
-Gemfile.lock
+# Update: Heroku requires this file! So not ignoring anymore
+# Gemfile.lock
 
 # Ignore bundler config
 /.bundle
