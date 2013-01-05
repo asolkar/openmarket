@@ -1,24 +1,15 @@
-<% provide(:title, 'Shop Info') %>
-<% provide(:page_heading, 'Showing Shop') %>
+<% provide(:title, 'Shop Info - #{@shop.name}') %>
+<% provide(:page_heading, "#{@shop.name}") %>
 
-<p>
-  <b>Created at:</b>
-  <%= @shop.created_at %>
-</p>
-<p>
-  <b>Created by:</b>
-  <%= @shop.user.fullname %>
-</p>
-<p>
-  <b>Name:</b>
-  <%= @shop.name %>
-</p>
-<p>
-  <b>Description:</b>
-  <%= @shop.description %>
-</p>
+  Owned by <%= @shop.user.fullname %>
+  <p>
+  <b><%= @shop.description %></b>
 
+  <%= render @shop.items %>
+
+  <p>
 <% if @shop.user.id == current_user.id %>
-  <%= link_to 'Edit', edit_shop_path(@shop), :class => 'btn' %> 
+  <%= link_to 'Edit', edit_shop_path(@shop), :class => 'btn' %>
+  <%= link_to 'Add Item', new_shop_item_path(@shop), :class => 'btn' %>
 <% end %>
 <%= link_to 'Shops', shops_path, :class => 'btn' %>

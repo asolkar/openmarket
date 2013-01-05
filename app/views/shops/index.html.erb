@@ -1,4 +1,5 @@
-<h1>Listing shops</h1>
+<% provide(:title, 'Shop List') %>
+<% provide(:page_heading, 'Listing shops') %>
 
 <table>
   <tr>
@@ -10,12 +11,12 @@
   </tr>
 
 <% @shops.each do |shop| %>
-  <tr>
+  <tr class="<%= cycle("even", "odd") %>">
     <td><%= shop.created_at %></td>
     <td><%= shop.name %></td>
     <td><%= shop.user.fullname %></td>
     <td><%= link_to 'Show', shop %></td>
-    <% if shop.user.id == current_user.id %>
+    <% if current_user && shop.user.id == current_user.id %>
       <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
     <% else %>
       <td>&mdash;</td>

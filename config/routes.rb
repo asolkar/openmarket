@@ -45,6 +45,13 @@ OpenMarket::Application.routes.draw do
   #     resource :seller
   #   end
 
+  #
+  # Items reside within Shops
+  #
+  resources :shops do
+    resources :items
+  end
+
   # Sample resource route with more complex sub-resources
   #   resources :products do
   #     resources :comments
@@ -84,5 +91,5 @@ OpenMarket::Application.routes.draw do
   #
   # Singular user paths - for authenticated user access
   #
-  match '/user(/:id)',    to: 'users#show', :via => :get
+  match '/profile',    to: 'users#show', :via => :get
 end

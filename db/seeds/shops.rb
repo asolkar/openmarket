@@ -1,0 +1,6 @@
+Shop.create(:id => 1, :name => "MMA Misc", :description => "MMA's first!", :user_id => 1)
+Shop.create(:id => 2, :name => "MMA random", :description => "MMA's random stuff", :user_id => 1)
+Shop.create(:id => 3, :name => "Junk Misc", :description => "Junk's first!", :user_id => 2)
+Shop.create(:id => 4, :name => "Junk Random", :description => "Junk's random stuff", :user_id => 2)
+Shop.create(:id => 5, :name => "MMA belongs", :description => "My belongings", :user_id => 1)
+Shop.create(:id => 6, :name => "MMA belongs 2", :description => "More of my belongings", :user_id => 1)

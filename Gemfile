@@ -45,3 +45,5 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use ActiveAdmin administration
 gem 'activeadmin'
+
+gem "seed_dumper", "~> 0.1.3"

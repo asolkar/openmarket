@@ -1,4 +1,5 @@
-<%= form_for(@item) do |f| %>
+
+<%= form_for([@shop, @shop.items.new]) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -32,6 +33,6 @@
     <%= f.check_box :active %>
   </div>
   <div class="actions">
-    <%= f.submit 'Item User', :class => 'btn' %>
+    <%= f.submit 'Create item', :class => 'btn' %>
   </div>
 <% end %>

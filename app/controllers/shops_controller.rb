@@ -1,5 +1,5 @@
 class ShopsController < InheritedResources::Base
-  before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy, :index]
+  before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy]
 
   # GET /shops/new
   # GET /shops/new.json
@@ -16,8 +16,7 @@ class ShopsController < InheritedResources::Base
   # POST /shops
   # POST /shops.json
   def create
-    @shop = Shop.new(params[:shop])
-    @shop.user = current_user
+    @shop = current_user.shops.new(params[:shop])
 
     respond_to do |format|
       if @shop.save

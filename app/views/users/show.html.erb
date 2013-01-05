@@ -1,24 +1,13 @@
 <% provide(:title, 'User Info - ' + "#{@user.fullname}") %>
 <% provide(:page_heading, "#{@user.fullname}") %>
 
-<p>
-  <b>Fullname:</b>
-  <%= @user.fullname %>
-</p>
-
-<p>
-  <b>Id:</b>
-  <%= @user.id %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-  <b>Created at:</b>
-  <%= @user.created_at %>
-</p>
+<div class="row">
+  <div class="span4">
+    <div class="muted">Member Since <%= @user.created_at %></div>
+  </div><!-- /.span4 -->
+  <div class="span8">
+  <%= render @user.shops %>
+  </div><!-- /.span8 -->
+</div><!-- /.row -->
 
 <%= link_to 'Edit', edit_user_path(@user), :class => 'btn' %>
