@@ -51,8 +51,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    if params.has_key?(:id)
-      @user = User.find(params[:id])
+    if params.has_key?(:name)
+      @user = User.find_by_name(params[:name])
     else
       @user = current_user
     end
@@ -65,13 +65,13 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(params[:name])
   end
 
   # PUT /users/1
   # PUT /users/1.json
   def update
-    @user = User.find(params[:id])
+    @user = User.find(params[:name])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
