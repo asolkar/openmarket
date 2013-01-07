@@ -11,10 +11,7 @@ OpenMarket::Application.routes.draw do
   get "static_pages/help"
   get "static_pages/about"
 
-  resources :sessions
-  resources :users do
-    match "users/:name" => 'users#show', :as => :name
-  end
+  resources :sessions, :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -93,7 +90,7 @@ OpenMarket::Application.routes.draw do
   #
   # Singular user paths - for authenticated user access
   #
-  scope '/:name', :constraints => ProfileConstraint do
+  scope '/:username', :constraints => ProfileConstraint do
     get '' => 'users#show'
   end
 end

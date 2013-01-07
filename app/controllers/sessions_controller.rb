@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def new
     if current_user
       flash[:notice] = "You are already logged as " + current_user.fullname
-      redirect_to '/'
+      redirect_to user_url
       return false
     end
   end
@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     user = User.find_by_username(params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_url, :notice => "Logged in!"
+      redirect_to user, :notice => "Welcome " + user.fullname + "! You are logged in."
     else
       flash.now.alert = "Invalid username or password"
       render "new"
