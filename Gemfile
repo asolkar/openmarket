@@ -7,6 +7,7 @@ gem 'therubyracer', '~> 0.10.2'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development do
+  gem 'mongrel'
   gem 'sqlite3', '1.3.6'
 end
 
