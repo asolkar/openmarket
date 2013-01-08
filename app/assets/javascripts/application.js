@@ -24,7 +24,7 @@ $(function(){
   // Activate Bootstrap tooltips
   //
   $(".container").tooltip({
-    selector: "a[rel=tooltip]"
+    selector: "a[rel~=tooltip]"
   });
 })
 
