@@ -1,5 +1,5 @@
 class ShopsController < InheritedResources::Base
-  before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy]
+  before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy, :my_index]
 
   # GET /shops/new
   # GET /shops/new.json
@@ -51,4 +51,48 @@ class ShopsController < InheritedResources::Base
     end
   end
 
+  # GET /shops/1/edit
+  # GET /shops/1/edit.json
+  def edit
+    session[:return_to] ||= request.referer
+
+    @shop = Shop.find(params[:id])
+
+    unless @shop
+      flash[:alert] = "Could not find shop with ID " + @shop.id
+      redirect_to session.delete(:return_to)
+      return false
+    end
+    unless @shop.user == current_user
+      flash[:alert] = "You are not to owner of this shop. You cannot edit it"
+      redirect_to session.delete(:return_to)
+      return false
+    end
+  end
+
+  # DELETE /shops/1
+  # DELETE /shops/1.json
+  def destroy
+    session[:return_to] ||= request.referer
+
+    @shop = Shop.find(params[:id])
+
+    unless @shop
+      flash[:alert] = "Could not find shop with ID " + @shop.id
+      redirect_to session.delete(:return_to)
+      return false
+    end
+    unless @shop.user == current_user
+      flash[:alert] = "You are not to owner of this shop. You cannot delete it"
+      redirect_to session.delete(:return_to)
+      return false
+    end
+
+    @shop.destroy
+
+    respond_to do |format|
+      format.html { redirect_to session.delete(:return_to) }
+      format.json { head :no_content }
+    end
+  end
 end

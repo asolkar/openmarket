@@ -1,8 +1,4 @@
 OpenMarket::Application.routes.draw do
-  resources :items
-
-  resources :shops
-
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -11,6 +7,13 @@ OpenMarket::Application.routes.draw do
   get "static_pages/help"
   get "static_pages/about"
 
+
+  #
+  # Items reside within Shops
+  #
+  resources :shops do
+    resources :items
+  end
   resources :sessions, :users
 
   # The priority is based upon order of creation:
@@ -44,13 +47,6 @@ OpenMarket::Application.routes.draw do
   #     resources :comments, :sales
   #     resource :seller
   #   end
-
-  #
-  # Items reside within Shops
-  #
-  resources :shops do
-    resources :items
-  end
 
   # Sample resource route with more complex sub-resources
   #   resources :products do

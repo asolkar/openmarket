@@ -1,30 +1,6 @@
 <% provide(:title, 'Shop List') %>
 <% provide(:page_heading, 'Listing shops') %>
 
-<table>
-  <tr>
-    <th>Created at</th>
-    <th>Name</th>
-    <th>Owner</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @shops.each do |shop| %>
-  <tr class="<%= cycle("even", "odd") %>">
-    <td><%= shop.created_at %></td>
-    <td><%= shop.name %></td>
-    <td><%= shop.user.fullname %></td>
-    <td><%= link_to 'Show', shop %></td>
-    <% if current_user && shop.user.id == current_user.id %>
-      <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
-    <% else %>
-      <td>&mdash;</td>
-    <% end %>
-  </tr>
-<% end %>
-</table>
-
-<br />
+<%= render 'shop_list' %>
 
 <%= link_to 'New Shop', new_shop_path, :class => 'btn' %>

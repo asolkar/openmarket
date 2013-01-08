@@ -1,4 +1,25 @@
 <%= div_for shop do %>
-  <h3><%= link_to shop.name, shop %></h3>
-  <%= shop.description %>
+  <tr>
+    <td><%= link_to shop.name, shop %></td>
+    <td><%= shop.description %></td>
+    <td>
+      <%= link_to edit_shop_path(shop),
+                  :rel => 'tooltip',
+                  :title => 'Edit Shop' do %>
+        <i class="icon-edit"></i>
+      <% end %>
+      <%= link_to shop_path(shop),
+                  :confirm => 'Are you sure you want to delete this shop?',
+                  :method => :delete,
+                  :rel => 'tooltip',
+                  :title => 'Delete Shop' do %>
+        <i class="icon-remove"></i>
+      <% end %>
+      <%= link_to shop_path(shop),
+                  :rel => 'tooltip',
+                  :title => 'Visit Shop' do %>
+        <i class="icon-share"></i>
+      <% end %>
+    <td>
+  </tr>
 <% end %>

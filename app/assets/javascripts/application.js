@@ -15,3 +15,17 @@
 //= require_tree .
 // require twitter/bootstrap
 
+!function ($) {
+$(function(){
+
+  var $window = $(window)
+
+  //
+  // Activate Bootstrap tooltips
+  //
+  $(".container").tooltip({
+    selector: "a[rel=tooltip]"
+  });
+})
+
+}(window.jQuery)

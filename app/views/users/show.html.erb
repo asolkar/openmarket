@@ -3,11 +3,14 @@
 
 <div class="row">
   <div class="span4">
-    <div class="muted">Member Since <%= @user.created_at %></div>
+    <div class="muted">Member Since <%= @user.created_at.to_s(:member_since) %></div>
   </div><!-- /.span4 -->
   <div class="span8">
-  <h2>Shops</h2>
-  <%= render @user.shops %>
+    <h2>Shops</h2>
+    <table class="table">
+    <tr><th>Name</th><th>Description</th><th>Actions</th></tr>
+    <%= render @user.shops %>
+    </table>
   </div><!-- /.span8 -->
 </div><!-- /.row -->
 
