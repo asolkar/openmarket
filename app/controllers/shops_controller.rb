@@ -40,4 +40,15 @@ class ShopsController < InheritedResources::Base
     end
   end
 
+  # GET /my_index
+  # GET /my_index.json
+  def my_index
+    @shops = current_user.shops
+
+    respond_to do |format|
+      format.html # my_index.html.erb
+      format.json { render json: @shops }
+    end
+  end
+
 end

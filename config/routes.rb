@@ -93,4 +93,7 @@ OpenMarket::Application.routes.draw do
   scope '/:username', :constraints => ProfileConstraint do
     get '' => 'users#show'
   end
+  scope '/:username/shops', :constraints => ProfileConstraint do
+    get '' => 'shops#my_index'
+  end
 end
