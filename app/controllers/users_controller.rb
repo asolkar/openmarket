@@ -57,6 +57,8 @@ class UsersController < ApplicationController
       @user = current_user
     end
 
+    @shops = @user.shops.order(:created_at).page(params[:page]).per(5)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }

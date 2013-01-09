@@ -1,6 +1,15 @@
-Shop.create(:id => 1, :name => "MMA Misc", :description => "MMA's first!", :user_id => 1)
-Shop.create(:id => 2, :name => "MMA random", :description => "MMA's random stuff", :user_id => 1)
-Shop.create(:id => 3, :name => "Junk Misc", :description => "Junk's first!", :user_id => 2)
-Shop.create(:id => 4, :name => "Junk Random", :description => "Junk's random stuff", :user_id => 2)
-Shop.create(:id => 5, :name => "MMA belongs", :description => "My belongings", :user_id => 1)
-Shop.create(:id => 6, :name => "MMA belongs 2", :description => "More of my belongings", :user_id => 1)
+#
+# Items for MMA
+#
+shop_id = 1
+["MMA", "Junk"].each_with_index do |user_name, user_idx|
+  user_id = user_idx+1
+  ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"].each_with_index do |shop_num, shop_idx|
+    Shop.create :id => shop_id,
+                :name => "#{user_name} Shop #{shop_num}",
+                :description => "Shop number #{shop_num} for #{user_name} ",
+                :user_id => user_id
+    puts "#{user_name}:#{user_id} Shop #{shop_num}:#{shop_id}"
+    shop_id = shop_id + 1
+  end
+end

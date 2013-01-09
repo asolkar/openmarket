@@ -15,6 +15,10 @@
 <%= render "shared/alerts" %>
 <% end %>
 
+<% if content_for?(:breadcrumbs) %>
+<%= yield(:breadcrumbs) %>
+<% end %>
+
 <% if !:page_heading.blank? %>
 <h1><%= yield(:page_heading) %></h1>
 <% end %>

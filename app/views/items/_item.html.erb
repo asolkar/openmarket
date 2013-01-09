@@ -1,3 +1,27 @@
 <%= div_for item do %>
-  <h4><%= link_to item.name, item %></h4>
+  <tr>
+    <td><%= link_to item.name, shop_item_path(item.shop, item) %></td>
+    <td><%= item.description %></td>
+    <td>
+      <%= link_to shop_item_path(item.shop, item),
+                  :rel => 'tooltip',
+                  :title => 'Share Item' do %>
+        <i class="icon-share"></i>
+      <% end %>
+      <% if item.shop.user == current_user %>
+        <%= link_to edit_shop_item_path(item.shop, item),
+                    :rel => 'tooltip',
+                    :title => 'Edit Item' do %>
+          <i class="icon-edit"></i>
+        <% end %>
+        <%= link_to shop_item_path(item.shop, item),
+                    :confirm => 'Are you sure you want to delete this item?',
+                    :method => :delete,
+                    :rel => 'tooltip',
+                    :title => 'Delete Item' do %>
+          <i class="icon-remove"></i>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
 <% end %>

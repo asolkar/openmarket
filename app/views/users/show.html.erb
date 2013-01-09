@@ -7,9 +7,10 @@
   </div><!-- /.span4 -->
   <div class="span8">
     <h2>Shops</h2>
+    <%= paginate @shops %>
     <table class="table">
     <tr><th>Name</th><th>Description</th><th>Actions</th></tr>
-    <%= render @user.shops %>
+    <%= render @shops %>
     </table>
   </div><!-- /.span8 -->
 </div><!-- /.row -->
