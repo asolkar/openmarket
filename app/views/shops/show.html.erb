@@ -1,5 +1,10 @@
 <% provide(:title, "Shop Info - #{@shop.name}") %>
-<% provide(:page_heading, "#{@shop.name}") %>
+
+<% content_for :page_heading do %>
+  <%= @shop.name %>
+  <small><%= @shop.user.fullname %></small>
+<% end %>
+
 <% content_for :breadcrumbs do %>
   <ul class="breadcrumb">
   <li><%= link_to "OpenMarket", root_path %> <span class="divider">/</span></li>
@@ -7,14 +12,18 @@
   </ul>
 <% end %>
 
-  Owned by <%= @shop.user.fullname %>
-  <p>
-  <b><%= @shop.description %></b>
+<hr class="featurette-divider">
 
-  <table class="table">
-  <tr><th>Name</th><th>Description</th><th>Actions</th></tr>
-  <%= render @shop.items %>
-  </table>
+<div class="row">
+  <div class="span2">
+    <%= @shop.description %>
+  </div><!-- /.span4 -->
+  <div class="span10">
+    <table class="table table-bordered">
+    <tr><th>Name</th><th>Description</th><th>Actions</th></tr>
+    <%= render @shop.items %>
+    </table>
+  </div><!-- /.span8 -->
+</div><!-- /.row -->
 
-  <p>
 <%= link_to 'Shops', shops_path, :class => 'btn' %>

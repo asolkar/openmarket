@@ -1,5 +1,13 @@
 <% provide(:title, "Item - #{@item.shop.name} - #{@item.name}") %>
-<% provide(:page_heading, "#{@item.name}") %>
+<% content_for :page_heading do %>
+<%= @item.name %>
+  <% if @item.active %>
+    <span class="label label-success">Active</span>
+  <% else %>
+    <span class="label">Inactive</span>
+  <% end %>
+<% end %>
+
 <% content_for :breadcrumbs do %>
   <ul class="breadcrumb">
   <li><%= link_to "OpenMarket", root_path %> <span class="divider">/</span></li>
@@ -8,14 +16,21 @@
   </ul>
 <% end %>
 
-  From <%= @item.shop.user.fullname %>'s <%= @item.shop.name %>
-  <p>
-  <%= @item.description %>
+<hr class="featurette-divider">
 
-  <table class="table">
-  <tr><th>Price</th><th>Quantity</th><th>Active</th></tr>
-  <tr><td><%= @item.price %></td><td><%= @item.quantity %></td><td><%= @item.active %></td></tr>
-  </table>
+<div class="row">
+  <div class="span2">
+    <table class="table table-bordered">
+    <tr><th>Price</th><td><%= number_to_currency(@item.price, :precision => 2) %></td></tr>
+    <tr><th>Quantity</th><td><%= @item.quantity %></td></tr>
+    </table>
+  </div><!-- /.span4 -->
+  <div class="span10">
+    <%= @item.description %>
+  </div><!-- /.span8 -->
+</div><!-- /.row -->
 
+<% if current_user && current_user.id == @item.shop.user_id %>
 <%= link_to 'Edit Item', edit_shop_item_path(@item.shop, @item), :class => 'btn' %>
+<% end %>
 <%= link_to 'Shop', shop_path(@item.shop), :class => 'btn' %>
