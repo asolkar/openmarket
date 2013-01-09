@@ -1,15 +1,20 @@
 <% provide(:title, "Shop Info - #{@shop.name}") %>
 <% provide(:page_heading, "#{@shop.name}") %>
+<% content_for :breadcrumbs do %>
+  <ul class="breadcrumb">
+  <li><%= link_to "OpenMarket", root_path %> <span class="divider">/</span></li>
+  <li class="active"><%= @shop.name %></li>
+  </ul>
+<% end %>
 
   Owned by <%= @shop.user.fullname %>
   <p>
   <b><%= @shop.description %></b>
 
+  <table class="table">
+  <tr><th>Name</th><th>Description</th><th>Actions</th></tr>
   <%= render @shop.items %>
+  </table>
 
   <p>
-<% if @shop.user.id == current_user.id %>
-  <%= link_to 'Edit', edit_shop_path(@shop), :class => 'btn' %>
-  <%= link_to 'Add Item', new_shop_item_path(@shop), :class => 'btn' %>
-<% end %>
 <%= link_to 'Shops', shops_path, :class => 'btn' %>

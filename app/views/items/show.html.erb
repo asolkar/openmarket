@@ -1,35 +1,21 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "Item - #{@item.shop.name} - #{@item.name}") %>
+<% provide(:page_heading, "#{@item.name}") %>
+<% content_for :breadcrumbs do %>
+  <ul class="breadcrumb">
+  <li><%= link_to "OpenMarket", root_path %> <span class="divider">/</span></li>
+  <li><%= link_to "#{@item.shop.name}", shop_path(@item.shop) %> <span class="divider">/</span></li>
+  <li class="active"><%= @item.name %></li>
+  </ul>
+<% end %>
 
-<p>
-  <b>Created at:</b>
-  <%= @item.created_at %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @item.name %>
-</p>
-
-<p>
-  <b>Description:</b>
+  From <%= @item.shop.user.fullname %>'s <%= @item.shop.name %>
+  <p>
   <%= @item.description %>
-</p>
 
-<p>
-  <b>Price:</b>
-  <%= @item.price %>
-</p>
+  <table class="table">
+  <tr><th>Price</th><th>Quantity</th><th>Active</th></tr>
+  <tr><td><%= @item.price %></td><td><%= @item.quantity %></td><td><%= @item.active %></td></tr>
+  </table>
 
-<p>
-  <b>Quantity:</b>
-  <%= @item.quantity %>
-</p>
-
-<p>
-  <b>Active:</b>
-  <%= @item.active %>
-</p>
-
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<%= link_to 'Edit Item', edit_shop_item_path(@item.shop, @item), :class => 'btn' %>
+<%= link_to 'Shop', shop_path(@item.shop), :class => 'btn' %>

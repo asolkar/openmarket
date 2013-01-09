@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20130107020615) do
     t.decimal  "price"
     t.integer  "quantity"
     t.boolean  "active"
+    t.boolean  "db_seeding"
     t.datetime "updated_at",  :null => false
     t.integer  "shop_id"
   end
