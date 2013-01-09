@@ -6,5 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
-load "#{Rails.root}/db/seeds/items.rb"
+load "#{Rails.root}/db/seeds/users.rb"
 load "#{Rails.root}/db/seeds/shops.rb"
+load "#{Rails.root}/db/seeds/items.rb"

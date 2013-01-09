@@ -40,6 +40,7 @@
     <%= f.text_field :password_confirmation %>
   </div>
   <div class="actions">
-    <%= f.submit 'Create User', :class => 'btn' %>
+    <%= f.submit 'Create User', :class => 'btn btn-primary' %>
+    <%= link_to 'Cancel', root_path, :class => 'btn' %>
   </div>
 <% end %>

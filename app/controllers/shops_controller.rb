@@ -32,7 +32,8 @@ class ShopsController < InheritedResources::Base
   # GET /shops
   # GET /shops.json
   def index
-    @shops = Shop.all
+    # @shops = Shop.all.page(params[:page]).per(10)
+    @shops = Shop.order(:created_at).page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -67,6 +68,19 @@ class ShopsController < InheritedResources::Base
       flash[:alert] = "You are not to owner of this shop. You cannot edit it"
       redirect_to session.delete(:return_to)
       return false
+    end
+  end
+
+  # GET /shops/1
+  # GET /shops/1.json
+  def show
+    @shop = Shop.find(params[:id])
+
+    @items = @shop.items.order(:created_at).page(params[:page]).per(5)
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @user }
     end
   end
 
