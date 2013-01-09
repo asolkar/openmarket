@@ -48,3 +48,5 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'activeadmin'
 
 gem "seed_dumper", "~> 0.1.3"
+
+gem "kaminari"

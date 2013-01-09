@@ -31,6 +31,5 @@
 </div><!-- /.row -->
 
 <% if current_user && current_user.id == @item.shop.user_id %>
-<%= link_to 'Edit Item', edit_shop_item_path(@item.shop, @item), :class => 'btn' %>
+<%= link_to 'Edit Item', edit_shop_item_path(@item.shop, @item), :class => 'btn btn-primary' %>
 <% end %>
-<%= link_to 'Shop', shop_path(@item.shop), :class => 'btn' %>

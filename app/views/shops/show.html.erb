@@ -19,11 +19,10 @@
     <%= @shop.description %>
   </div><!-- /.span4 -->
   <div class="span10">
+    <%= paginate @items %>
     <table class="table table-bordered">
     <tr><th>Name</th><th>Description</th><th>Actions</th></tr>
-    <%= render @shop.items %>
+    <%= render @items %>
     </table>
   </div><!-- /.span8 -->
 </div><!-- /.row -->
-
-<%= link_to 'Shops', shops_path, :class => 'btn' %>
