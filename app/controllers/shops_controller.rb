@@ -1,112 +1,54 @@
 class ShopsController < InheritedResources::Base
+  respond_to :html, :json
+
   before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy, :my_index]
+  before_filter :save_referer, :only => [:edit, :destroy]
+  before_filter :load_items, :only => [:show]
+  before_filter :begin_of_association_chain, :only => [:my_index]
+  before_filter :collection, :only => [:my_index]
 
-  # GET /shops/new
-  # GET /shops/new.json
-  def new
+  after_filter :shop_not_found, :only => [:edit, :destroy]
+  after_filter :not_users_shop, :only => [:edit, :destroy]
 
-    @shop = Shop.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @shop }
-    end
-  end
-
-  # POST /shops
-  # POST /shops.json
-  def create
-    @shop = current_user.shops.new(params[:shop])
-
-    respond_to do |format|
-      if @shop.save
-        format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
-        format.json { render json: @shop, status: :created, location: @shop }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @shop.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # GET /shops
-  # GET /shops.json
-  def index
-    # @shops = Shop.all.page(params[:page]).per(10)
-    @shops = Shop.order(:created_at).page(params[:page]).per(10)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @shops }
-    end
-  end
-
-  # GET /my_index
-  # GET /my_index.json
   def my_index
-    @shops = current_user.shops
-
     respond_to do |format|
       format.html # my_index.html.erb
       format.json { render json: @shops }
     end
   end
 
-  # GET /shops/1/edit
-  # GET /shops/1/edit.json
-  def edit
-    session[:return_to] ||= request.referer
-
-    @shop = Shop.find(params[:id])
-
-    unless @shop
-      flash[:alert] = "Could not find shop with ID " + @shop.id
-      redirect_to session.delete(:return_to)
-      return false
-    end
-    unless @shop.user == current_user
-      flash[:alert] = "You are not to owner of this shop. You cannot edit it"
-      redirect_to session.delete(:return_to)
-      return false
-    end
-  end
-
-  # GET /shops/1
-  # GET /shops/1.json
-  def show
-    @shop = Shop.find(params[:id])
-
-    @items = @shop.items.order(:created_at).page(params[:page]).per(5)
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
-    end
-  end
-
-  # DELETE /shops/1
-  # DELETE /shops/1.json
-  def destroy
-    session[:return_to] ||= request.referer
-
-    @shop = Shop.find(params[:id])
-
-    unless @shop
-      flash[:alert] = "Could not find shop with ID " + @shop.id
-      redirect_to session.delete(:return_to)
-      return false
-    end
-    unless @shop.user == current_user
-      flash[:alert] = "You are not to owner of this shop. You cannot delete it"
-      redirect_to session.delete(:return_to)
-      return false
+  protected
+    def begin_of_association_chain
+      @current_user
     end
 
-    @shop.destroy
-
-    respond_to do |format|
-      format.html { redirect_to session.delete(:return_to) }
-      format.json { head :no_content }
+    def collection
+      @shops ||= end_of_association_chain.order(:created_at).page(params[:page]).per(10)
     end
-  end
+
+  private
+    def save_referer
+      session[:return_to] ||= request.referer
+    end
+
+    def shop_not_found
+      unless @shop
+        flash[:alert] = "Could not find shop with ID " + @shop.id
+        redirect_to session.delete(:return_to)
+        return false
+      end
+    end
+
+    def not_users_shop
+      unless @shop.user == current_user
+        flash[:alert] = "You are not to owner of this shop. You cannot edit it"
+        redirect_to session.delete(:return_to)
+        return false
+      end
+    end
+
+    def load_items
+      @items = resource.items.order(:created_at).page(params[:page]).per(5)
+    end
 end
+
