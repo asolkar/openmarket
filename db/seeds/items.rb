@@ -9,7 +9,7 @@ item_id = 1
     ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"].each do |item_num|
       price_val = Random.rand(10..50)
       quant_val = Random.rand(1..7)
-      act_val = (Random.rand(1..3) == 1)
+      act_val = (Random.rand(1..3) == 2)
       shop = Shop.find(shop_id)
       Item.create :db_seeding => true,
                   :id => item_id,
@@ -20,7 +20,7 @@ item_id = 1
                   :active => act_val,
                   :shop => shop,
                   :shop_id => shop_id
-      puts "#{user_name} Shop #{shop_num}:#{shop_id} item #{item_num}:#{item_id}, P#{price_val}, Q#{quant_val}"
+      puts "#{user_name} Shop #{shop_num}:#{shop_id} item #{item_num}:#{item_id}, P#{price_val}, Q#{quant_val}, A#{act_val}"
       item_id = item_id + 1
     end
   end
