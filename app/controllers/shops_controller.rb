@@ -1,25 +1,20 @@
 class ShopsController < InheritedResources::Base
   respond_to :html, :json
 
+  rescue_from ActiveRecord::RecordNotFound, :with => :shop_not_found
+
   before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy, :my_index]
-  before_filter :save_referer, :only => [:edit, :destroy]
+  before_filter :save_referer, :only => [:edit, :destroy, :show]
   before_filter :load_items, :only => [:show]
-  before_filter :begin_of_association_chain, :only => [:my_index]
-  before_filter :collection, :only => [:my_index]
 
   after_filter :shop_not_found, :only => [:edit, :destroy]
   after_filter :not_users_shop, :only => [:edit, :destroy]
 
-  def my_index
-    respond_to do |format|
-      format.html # my_index.html.erb
-      format.json { render json: @shops }
-    end
-  end
-
   protected
     def begin_of_association_chain
-      @current_user
+      if params.has_key?(:username)
+        @user = User.find_by_username(params[:username])
+      end
     end
 
     def collection
@@ -29,11 +24,12 @@ class ShopsController < InheritedResources::Base
   private
     def save_referer
       session[:return_to] ||= request.referer
+      session[:return_to] ||= root_path # If empty, go to root
     end
 
     def shop_not_found
       unless @shop
-        flash[:alert] = "Could not find shop with ID " + @shop.id
+        flash[:alert] = "Could not find shop with ID " + params[:id]
         redirect_to session.delete(:return_to)
         return false
       end

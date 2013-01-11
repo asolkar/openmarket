@@ -33,12 +33,12 @@ OpenMarket::Application.routes.draw do
   match '/logout',  to: 'sessions#destroy'
 
   #
-  # Singular user paths - for authenticated user access
+  # Paths for user scoped access
   #
   scope '/:username', :constraints => ProfileConstraint do
     get '' => 'users#show'
-  end
-  scope '/:username/shops', :constraints => ProfileConstraint do
-    get '' => 'shops#my_index'
+    resources :shops do
+      resources :items
+    end
   end
 end
