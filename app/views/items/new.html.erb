@@ -1,6 +1,13 @@
 <% provide(:title, 'New Item') %>
 <% provide(:page_heading, "New item for shop #{@shop.name}") %>
+<% content_for :breadcrumbs do %>
+  <ul class="breadcrumb">
+  <li><%= link_to "OpenMarket", root_path %> <span class="divider">/</span></li>
+  <li><%= link_to "#{@shop.name}", shop_path(@shop) %> <span class="divider">/</span></li>
+  <li class="active">New item</li>
+  </ul>
+<% end %>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', items_path, :class => 'btn' %>
+<%= link_to 'Back', shop_path(@shop.id), :class => 'btn' %>

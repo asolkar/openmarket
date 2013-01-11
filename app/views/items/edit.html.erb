@@ -1,3 +1,13 @@
-<h1>Editing item</h1>
+<% provide(:title, 'Edit Item') %>
+<% provide(:page_heading, "Editing #{@item.name}") %>
+<% content_for :breadcrumbs do %>
+  <ul class="breadcrumb">
+  <li><%= link_to "OpenMarket", root_path %> <span class="divider">/</span></li>
+  <li><%= link_to "#{@shop.name}", shop_path(@shop) %> <span class="divider">/</span></li>
+  <li class="active">Edit item</li>
+  </ul>
+<% end %>
 
 <%= render 'form' %>
+
+<%= link_to 'Back', shop_item_path(@shop.id, @item.id), :class => 'btn' %>
