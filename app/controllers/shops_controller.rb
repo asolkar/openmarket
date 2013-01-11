@@ -3,17 +3,20 @@ class ShopsController < InheritedResources::Base
 
   rescue_from ActiveRecord::RecordNotFound, :with => :shop_not_found
 
-  before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy, :my_index]
+  before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy]
   before_filter :save_referer, :only => [:edit, :destroy, :show]
   before_filter :load_items, :only => [:show]
 
-  after_filter :shop_not_found, :only => [:edit, :destroy]
+  after_filter :shop_not_found, :only => [:edit, :destroy, :show]
   after_filter :not_users_shop, :only => [:edit, :destroy]
 
   protected
     def begin_of_association_chain
       if params.has_key?(:username)
         @user = User.find_by_username(params[:username])
+      end
+      if action_name == "create" || action_name == "update"
+        @user = current_user;
       end
     end
 

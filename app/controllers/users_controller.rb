@@ -1,8 +1,6 @@
 class UsersController < InheritedResources::Base
   respond_to :html, :json
 
-  # actions :all, :except => [:index]
-
   before_filter :require_user, :only => [:index, :show, :edit, :update]
   before_filter :already_logged_in, :only => [:new]
   before_filter :no_user_listing, :only => [:index]

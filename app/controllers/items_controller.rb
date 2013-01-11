@@ -6,18 +6,12 @@ class ItemsController < InheritedResources::Base
   before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy]
   before_filter :save_referer, :only => [:edit, :destroy, :show]
 
-  after_filter :item_not_found, :only => [:edit, :destroy, :show]
-  after_filter :not_users_item, :only => [:edit, :destroy]
+  after_filter :item_not_found, :only => [:edit, :destroy, :show, :update]
+  after_filter :not_users_item, :only => [:edit, :destroy, :update]
 
   belongs_to :shop
 
   protected
-    def begin_of_association_chain
-      if params.has_key?(:username)
-        @user = User.find_by_username(params[:username])
-      end
-    end
-
     def collection
       @items ||= end_of_association_chain.order(:created_at).page(params[:page]).per(5)
     end
