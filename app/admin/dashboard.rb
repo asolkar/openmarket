@@ -24,8 +24,19 @@ ActiveAdmin.register_page "Dashboard" do
       end
 
       column do
-        panel "Info" do
-          para "Welcome to ActiveAdmin."
+        panel "Recent Shops" do
+          table_for Shop.order("created_at desc").limit(5) do
+            column :name do |shop|
+              link_to shop.name, admin_shop_path(shop.id)
+            end
+          end
+        end
+        panel "Recent Items" do
+          table_for Item.order("created_at desc").limit(5) do
+            column :name do |item|
+              link_to item.name, admin_item_path(item.id)
+            end
+          end
         end
       end
     end
