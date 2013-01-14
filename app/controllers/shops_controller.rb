@@ -22,7 +22,11 @@ class ShopsController < InheritedResources::Base
     if action_name == "create" || action_name == "update"
       @user = current_user;
     end
-    @shops ||= @user.shops.order(:created_at).page(params[:page]).per(10)
+    if @user
+      @shops ||= @user.shops.order(:created_at).page(params[:page]).per(10)
+    else
+      @shops ||= Shop.order(:created_at).page(params[:page]).per(10)
+    end
 
   end
 
