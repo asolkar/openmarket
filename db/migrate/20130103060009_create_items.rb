@@ -8,6 +8,7 @@ class CreateItems < ActiveRecord::Migration
       t.integer :quantity
       t.boolean :active
       t.boolean :db_seeding
+      t.integer :shop_id
 
       t.timestamps
     end

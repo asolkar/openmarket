@@ -1,0 +1,8 @@
+defaults:
+  app_name: OpenMarket
+
+development:
+  app_key: dev
+
+production:
+  app_key: prod
