@@ -6,6 +6,8 @@ gem 'rails', '3.2.8'
 gem 'therubyracer', '~> 0.10.2'
 
 gem "rails_config"
+gem 'inherited_resources'
+gem 'has_scope'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -159,6 +159,8 @@ DEPENDENCIES
   activeadmin
   bcrypt-ruby (~> 3.0.0)
   coffee-rails (= 3.2.2)
+  has_scope
+  inherited_resources
   jquery-rails (= 2.1.3)
   kaminari
   pg (= 0.12.2)
