@@ -10,6 +10,22 @@ class ShopsController < InheritedResources::Base
   after_filter :shop_not_found, :only => [:edit, :destroy, :show]
   after_filter :not_users_shop, :only => [:edit, :destroy]
 
+  #
+  # MMA: FIXME: Need to find a way to properly user InheritedResources
+  #             with begin_of_association_chain and collection to
+  #             implement the index method
+  #
+  def index
+    if params.has_key?(:username)
+      @user = User.find_by_username(params[:username])
+    end
+    if action_name == "create" || action_name == "update"
+      @user = current_user;
+    end
+    @shops ||= @user.shops.order(:created_at).page(params[:page]).per(10)
+
+  end
+
   protected
     def begin_of_association_chain
       if params.has_key?(:username)
