@@ -21,11 +21,25 @@ $(function(){
   var $window = $(window)
 
   //
+  // Load the carousel
+  //
+  $(function(){
+    $('#myCarousel').carousel({
+      interval: 10000
+    })
+  });
+
+  //
   // Activate Bootstrap tooltips
   //
   $(".container").tooltip({
     selector: "a[rel~=tooltip]"
   });
+
+  //
+  // Dismiss alerts after 5 seconds
+  //
+  $('.alert').delay(5000).fadeOut(300);
 })
 
 }(window.jQuery)
