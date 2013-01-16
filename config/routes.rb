@@ -33,6 +33,7 @@ OpenMarket::Application.routes.draw do
   match '/logout',  to: 'sessions#destroy'
 
   match '/users/:username/edit', to: 'users#edit'
+  match '/users/:username', to: 'users#update', :via => :put
   match '/users/:username', to: redirect { |params, req| "/#{params[:username]}" }
 
   #
