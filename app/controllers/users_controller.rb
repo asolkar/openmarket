@@ -8,6 +8,10 @@ class UsersController < InheritedResources::Base
 
   private
 
+  def resource
+    @user = User.find_by_username(params[:username])
+  end
+
   def already_logged_in
     if current_user
       flash[:notice] = "You are already logged as " + current_user.fullname

@@ -4,6 +4,9 @@
 <div class="row">
   <div class="span4">
     <div class="muted">Member Since <%= @user.created_at.to_s(:member_since) %></div>
+    <div style="margin: 1.5em 1em">
+    <%= image_tag(@user.avatar_url, :class => 'img-polaroid') %>
+    </div>
   </div><!-- /.span4 -->
   <div class="span8">
     <h2>Shops</h2>
@@ -15,4 +18,4 @@
   </div><!-- /.span8 -->
 </div><!-- /.row -->
 
-<%= link_to 'Edit', edit_user_path(@user), :class => 'btn' %>
+<%= link_to 'Edit', edit_path(@user), :class => 'btn' %>

@@ -11,12 +11,12 @@ OpenMarket::Application.routes.draw do
   get "static_pages/about"
 
   #
-  # Items reside within Shops
+  # Default routes
   #
   resources :shops do
     resources :items
   end
-  resources :sessions, :users
+  resources :sessions
 
   #
   # Root
@@ -32,13 +32,18 @@ OpenMarket::Application.routes.draw do
   match '/login',   to: 'sessions#new'
   match '/logout',  to: 'sessions#destroy'
 
+  match '/users/:username/edit', to: 'users#edit'
+  match '/users/:username', to: redirect { |params, req| "/#{params[:username]}" }
+
   #
   # Paths for user scoped access
   #
   scope '/:username', :constraints => ProfileConstraint do
     get '' => 'users#show'
+    get 'edit' => 'users#edit'
     resources :shops do
       resources :items
     end
   end
+  resources :users
 end

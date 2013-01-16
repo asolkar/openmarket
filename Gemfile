@@ -8,6 +8,7 @@ gem 'therubyracer', '~> 0.10.2'
 gem "rails_config"
 gem 'inherited_resources'
 gem 'has_scope'
+gem 'carrierwave'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

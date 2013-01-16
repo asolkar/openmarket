@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20130103060009) do
     t.string   "fullname"
     t.string   "username"
     t.string   "password_digest"
+    t.string   "avatar"
     t.datetime "updated_at",      :null => false
   end
 
