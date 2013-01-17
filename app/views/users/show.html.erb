@@ -1,11 +1,13 @@
 <% provide(:title, 'User Info - ' + "#{@user.fullname}") %>
-<% provide(:page_heading, "#{@user.fullname}") %>
+<% content_for :page_heading do %>
+  <%= image_tag(@user.avatar.tiny.url, :class => 'img-polaroid') %> <%= @user.fullname %>
+<% end %>
 
 <div class="row">
   <div class="span4">
     <div class="muted">Member Since <%= @user.created_at.to_s(:member_since) %></div>
     <div style="margin: 1.5em 1em">
-    <%= image_tag(@user.avatar_url, :class => 'img-polaroid') %>
+    <%= image_tag(@user.avatar.url, :class => 'img-polaroid') %>
     </div>
   </div><!-- /.span4 -->
   <div class="span8">

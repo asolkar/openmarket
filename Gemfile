@@ -9,6 +9,7 @@ gem "rails_config"
 gem 'inherited_resources'
 gem 'has_scope'
 gem 'carrierwave'
+gem 'mini_magick'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

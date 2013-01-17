@@ -6,6 +6,11 @@ class UsersController < InheritedResources::Base
   before_filter :no_user_listing, :only => [:index]
   before_filter :load_shops, :only => [:show]
 
+  def update
+    resource.avatar.store!
+    update!
+  end
+
   private
 
   def resource
