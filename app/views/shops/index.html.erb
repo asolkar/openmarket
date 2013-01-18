@@ -1,5 +1,11 @@
 <% provide(:title, 'Shop List') %>
-<% provide(:page_heading, 'Listing shops') %>
+<% content_for :page_heading do %>
+  <% if @user %>
+  <%= image_tag(@user.avatar.tiny.url, :class => 'img-polaroid') %> <%= @user.fullname %>'s Shops
+  <% else %>
+    All Shops
+  <% end %>
+<% end %>
 
 <%= render 'shop_list' %>
 
