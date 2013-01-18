@@ -3,5 +3,6 @@
 <%= image_tag(@photo.image.url, :class => 'img-polaroid') %>
 <%= image_tag(@photo.image.thumb.url, :class => 'img-polaroid') %>
 
-<%= link_to 'Edit', edit_item_photo_path(@item, @photo) %> |
-<%= link_to 'Back', item_photos_path(@item) %>
+<%= link_to 'Edit', edit_shop_item_photo_path(@item.shop, @item, @photo) %> |
+<%= link_to 'All photos', shop_item_photos_path(@item.shop, @item) %> |
+<%= link_to 'Back to Item', shop_item_path(@item.shop, @item) %>

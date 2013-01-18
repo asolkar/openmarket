@@ -10,6 +10,16 @@ class PhotosController < InheritedResources::Base
 
   belongs_to :item
 
+  #
+  # Overriding to set redirection
+  #
+  def create
+    create! { shop_item_photo_path(@photo.item.shop, @photo.item, @photo) }
+  end
+  def destroy
+    destroy! { shop_item_path(@photo.item.shop, @photo.item) }
+  end
+
   protected
     def collection
       @photos ||= end_of_association_chain.order(:created_at).page(params[:page]).per(5)
