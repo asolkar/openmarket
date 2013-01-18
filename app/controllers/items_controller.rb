@@ -5,6 +5,7 @@ class ItemsController < InheritedResources::Base
 
   before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy]
   before_filter :save_referer, :only => [:edit, :destroy, :show]
+  before_filter :load_photos, :only => [:show, :edit, :update]
 
   after_filter :item_not_found, :only => [:edit, :destroy, :show, :update]
   after_filter :not_users_item, :only => [:edit, :destroy, :update]
@@ -36,5 +37,9 @@ class ItemsController < InheritedResources::Base
         redirect_to session.delete(:return_to)
         return false
       end
+    end
+
+    def load_photos
+      @photos = resource.photos.order(:created_at).page(params[:page]).per(5)
     end
 end

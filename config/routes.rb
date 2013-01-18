@@ -13,8 +13,13 @@ OpenMarket::Application.routes.draw do
   #
   # Default routes
   #
+  resources :items do
+    resources :photos
+  end
   resources :shops do
-    resources :items
+    resources :items do
+      resources :photos
+    end
   end
   resources :sessions
 
@@ -43,7 +48,9 @@ OpenMarket::Application.routes.draw do
     get '' => 'users#show'
     get 'edit' => 'users#edit'
     resources :shops do
-      resources :items
+      resources :items do
+        resources :photos
+      end
     end
   end
   resources :users

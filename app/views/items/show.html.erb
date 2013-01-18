@@ -27,9 +27,16 @@
   </div><!-- /.span4 -->
   <div class="span10">
     <%= @item.description %>
+    <%= paginate @photos %>
+    <table class="table table-bordered">
+    <tr><th>Name</th><th>Description</th><th>Actions</th></tr>
+    <%= render @photos %>
+    </table>
+
   </div><!-- /.span8 -->
 </div><!-- /.row -->
 
 <% if current_user && current_user.id == @item.shop.user_id %>
+<%= link_to 'Add a photo', new_shop_item_photo_path(@shop.id, @item.id), :class => 'btn btn-primary' %>
 <%= link_to 'Edit Item', edit_shop_item_path(@item.shop, @item), :class => 'btn btn-primary' %>
 <% end %>

@@ -3,6 +3,8 @@ class Item < ActiveRecord::Base
                   :quantity, :shop, :shop_id, :user, :user_id,
                   :db_seeding
 
+  has_many :photos
+
   belongs_to :shop
   belongs_to :user
 
