@@ -3,6 +3,7 @@ class Shop < ActiveRecord::Base
 
   belongs_to :user
   has_many :items
+  has_many :photos, :through => :items
 
   validates_presence_of :name, :on => :create
   validates_presence_of :description, :on => :create

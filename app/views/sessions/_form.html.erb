@@ -1,14 +1,14 @@
 <%= form_tag sessions_path do %>
-  <div class="field">
-    <%= label_tag :username %>
-    <%= text_field_tag :username, params[:username] %>
-  </div>
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions">
-    <%= submit_tag "Log in", :class => "btn btn-primary" %>
-    <%= link_to "Cancel", root_path, :class => "btn" %>
-  </div>
+  <dl class="dl-horizontal field">
+    <dt><%= label_tag :username %></dt>
+    <dd><%= text_field_tag :username, params[:username] %></dd>
+  </dl>
+  <dl class="dl-horizontal field">
+    <dt><%= label_tag :password %></dt>
+    <dd><%= password_field_tag :password %></dd>
+  </dl>
+  <dl class="dl-horizontal actions">
+    <dt><%= submit_tag "Log in", :class => "btn btn-primary" %></dt>
+    <dd><%= link_to "Cancel", root_path, :class => "btn" %></dd>
+  </dl>
 <% end %>

@@ -14,11 +14,12 @@ class ShopsController < InheritedResources::Base
     def begin_of_association_chain
       if action_name == "index"
         if params.has_key?(:username)
-          User.find_by_username(params[:username])
+          @user = User.find_by_username(params[:username])
         end
       elsif action_name == "create" || action_name == "update"
-        current_user;
+        @user = current_user;
       end
+      @user
     end
 
     def collection

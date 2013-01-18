@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag(@photo.image.url, :class => 'img-polaroid') %>
+<%= image_tag(@photo.image.thumb.url, :class => 'img-polaroid') %>
+
+<%= link_to 'Edit', edit_item_photo_path(@item, @photo) %> |
+<%= link_to 'Back', item_photos_path(@item) %>
