@@ -1,7 +1,23 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "Photo - #{@photo.item.shop.name} - #{@photo.item.name}") %>
+<% content_for :page_heading do %>
+  Photo for <%= @photo.item.name %>
+<% end %>
+
+<% content_for :breadcrumbs do %>
+  <ul class="breadcrumb">
+  <li><%= link_to "OpenMarket", root_path %> <span class="divider">/</span></li>
+  <li><%= link_to "#{@photo.item.shop.name}", shop_path(@photo.item.shop) %> <span class="divider">/</span></li>
+  <li><%= link_to "#{@photo.item.name}", shop_item_path(@photo.item.shop, @photo.item) %> <span class="divider">/</span></li>
+  <li class="active">Item photo</li>
+  </ul>
+<% end %>
+
+<hr class="featurette-divider">
 
 <%= image_tag(@photo.image.url, :class => 'img-polaroid') %>
 <%= image_tag(@photo.image.thumb.url, :class => 'img-polaroid') %>
 
-<%= link_to 'Edit', edit_item_photo_path(@item, @photo) %> |
-<%= link_to 'Back', item_photos_path(@item) %>
+<hr class="featurette-divider">
+
+<%= link_to 'Edit photo', edit_item_photo_path(@photo.item, @photo), :class => 'btn' %>
+<%= link_to 'Back to item', shop_item_path(@photo.item.shop, @photo.item), :class => 'btn' %>

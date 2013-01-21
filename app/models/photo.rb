@@ -6,4 +6,5 @@ class Photo < ActiveRecord::Base
   mount_uploader :image, PhotoUploader
 
   validates_presence_of :image, :scope => :item_id
+  validates_presence_of :caption, :scope => :item_id
 end
