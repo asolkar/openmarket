@@ -1,6 +1,14 @@
-<h1>Editing photo</h1>
+<% provide(:title, 'Edit Photo') %>
+<% provide(:page_heading, "Editing Photo") %>
+<% content_for :breadcrumbs do %>
+  <ul class="breadcrumb">
+  <li><%= link_to "OpenMarket", root_path %> <span class="divider">/</span></li>
+  <li><%= link_to "#{@photo.item.shop.name}", shop_path(@photo.item.shop) %> <span class="divider">/</span></li>
+  <li><%= link_to "#{@photo.item.name}", shop_item_path(@photo.item.shop, @photo.item) %> <span class="divider">/</span></li>
+  <li class="active">Edit photo</li>
+  </ul>
+<% end %>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', item_photo_path(@item) %> |
 <%= link_to 'Back', shop_item_path(@item.shop, @item) %>

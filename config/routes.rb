@@ -1,4 +1,8 @@
 OpenMarket::Application.routes.draw do
+  get "search/simple"
+
+  get "search/advanced"
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -34,6 +38,8 @@ OpenMarket::Application.routes.draw do
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/signup',  to: 'users#new'
+  match '/search',  to: 'search#simple'
+  match '/search/advanced',  to: 'search#advanced'
   match '/login',   to: 'sessions#new'
   match '/logout',  to: 'sessions#destroy'
 

@@ -10,14 +10,16 @@ class PhotosController < InheritedResources::Base
 
   belongs_to :item
 
-  #
-  # Overriding to set redirection
-  #
-  def create
-    create! { shop_item_photo_path(@photo.item.shop, @photo.item, @photo) }
+  def index
+    redirect_to shop_item_path(params['shop_id'], params['item_id'])
   end
+
+  def create
+    create! { shop_item_path(resource.item.shop, resource.item) }
+  end
+
   def destroy
-    destroy! { shop_item_path(@photo.item.shop, @photo.item) }
+    destroy! { shop_item_path(resource.item.shop, resource.item) }
   end
 
   protected
